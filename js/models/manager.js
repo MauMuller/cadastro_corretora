@@ -7,6 +7,10 @@ class Aplication{
     get typeImovel(){ return document.querySelector('input[name="radio"]:checked').value; }
     get areaHouse(){ return  document.querySelector('input[name="areaHouse"]').value; }
     get saleImovel(){ return document.querySelector('input[name="radio2"]:checked').value; }
+
+    get inputTagName() { return document.querySelector('input[name="clienteName"]'); }
+    get inputTagAreaHouse() { return document.querySelector('input[name="areaHouse"]'); }
+
     get btnAdd(){ return document.querySelector('input[name="btnAdd"]'); }
     get removeModal() { return document.querySelector('section.remove_modal'); }
     get btnRemove() { return document.querySelector('div.btn_remove'); }
@@ -37,6 +41,7 @@ class Aplication{
 
                 //Adicionando imoveis na lista
                 this.listImoveis.populateList(imovel);
+                this.clearForm();
             } else {
                 alert('Dados Incorretos!');
             }   
@@ -94,11 +99,15 @@ class Aplication{
         });
     }
 
+    clearForm(){
+        this.inputTagName.value = "";
+        this.inputTagAreaHouse.value = "";
+    }
+
     settingBorderBottomFilter(indIcon){
         for(let i=0; i<this.icon_filter.length; i++){
             i != indIcon ? this.icon_filter[i].classList.remove('border-b-2','border-first_yellow_color') : this.icon_filter[i].classList.add('border-b-2','border-first_yellow_color');
         }
-
     }
 
     removeFromList(checkedInd, typeImovel){
